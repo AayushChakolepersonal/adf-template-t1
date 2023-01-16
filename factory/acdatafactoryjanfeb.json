@@ -1,0 +1,9 @@
+{
+	"name": "acdatafactoryjanfeb",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "458185b7-4674-4135-a9d7-e422f9b374a0",
+		"tenantId": "a2f0e09a-46ba-479b-936a-a9fb45732784"
+	}
+}

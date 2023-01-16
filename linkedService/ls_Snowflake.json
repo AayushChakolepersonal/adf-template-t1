@@ -1,0 +1,20 @@
+{
+	"name": "ls_Snowflake",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Snowflake",
+		"typeProperties": {
+			"authenticationType": "Basic",
+			"connectionString": "jdbc:snowflake://pj16937.central-india.azure.snowflakecomputing.com/?user=AAYUSH&db=DECEMBER&warehouse=COMPUTE_WH",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_keyvault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "snowpass"
+			}
+		}
+	}
+}
