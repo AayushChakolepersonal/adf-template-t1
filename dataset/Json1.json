@@ -1,0 +1,29 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "list2.txt",
+				"fileSystem": "trialdata2"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"sourcelocation": {
+					"type": "string"
+				},
+				"sinklocation": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
