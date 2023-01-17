@@ -1,0 +1,24 @@
+{
+	"name": "metapipecopy_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_Snowflake",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "AAYUSH",
+			"table": {
+				"value": "@dataset().tablename",
+				"type": "Expression"
+			}
+		}
+	}
+}
