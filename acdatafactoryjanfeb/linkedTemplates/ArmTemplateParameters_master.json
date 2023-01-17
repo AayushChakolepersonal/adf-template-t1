@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "acdatafactoryjanfeb"
+		},
+		"ls_Snowflake_connectionString": {
+			"value": "jdbc:snowflake://pj16937.central-india.azure.snowflakecomputing.com/?user=AAYUSH&db=DECEMBER&warehouse=COMPUTE_WH"
+		},
+		"ls_adls_properties_typeProperties_url": {
+			"value": "https://acdatalakejanfeb.dfs.core.windows.net"
+		},
+		"ls_blob_sasUri": {
+			"value": ""
+		},
+		"ls_blob_properties_typeProperties_sasToken_secretName": {
+			"value": "blobsastoken"
+		},
+		"ls_blob_kv_properties_typeProperties_connectionString_secretName": {
+			"value": "blobstring"
+		},
+		"ls_keyvault_properties_typeProperties_baseUrl": {
+			"value": "https://ackeyvaultjanfeb.vault.azure.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

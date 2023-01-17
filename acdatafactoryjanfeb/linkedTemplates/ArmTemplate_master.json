@@ -1,0 +1,105 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "acdatafactoryjanfeb"
+		},
+		"ls_Snowflake_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_Snowflake'",
+			"defaultValue": "jdbc:snowflake://pj16937.central-india.azure.snowflakecomputing.com/?user=AAYUSH&db=DECEMBER&warehouse=COMPUTE_WH"
+		},
+		"ls_adls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://acdatalakejanfeb.dfs.core.windows.net"
+		},
+		"ls_blob_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'ls_blob'"
+		},
+		"ls_blob_properties_typeProperties_sasToken_secretName": {
+			"type": "string",
+			"defaultValue": "blobsastoken"
+		},
+		"ls_blob_kv_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "blobstring"
+		},
+		"ls_keyvault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://ackeyvaultjanfeb.vault.azure.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "acdatafactoryjanfeb_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_Snowflake_connectionString": {
+						"value": "[parameters('ls_Snowflake_connectionString')]"
+					},
+					"ls_keyvault_properties_typeProperties_baseUrl": {
+						"value": "[parameters('ls_keyvault_properties_typeProperties_baseUrl')]"
+					},
+					"ls_adls_properties_typeProperties_url": {
+						"value": "[parameters('ls_adls_properties_typeProperties_url')]"
+					},
+					"ls_blob_sasUri": {
+						"value": "[parameters('ls_blob_sasUri')]"
+					},
+					"ls_blob_properties_typeProperties_sasToken_secretName": {
+						"value": "[parameters('ls_blob_properties_typeProperties_sasToken_secretName')]"
+					},
+					"ls_blob_kv_properties_typeProperties_connectionString_secretName": {
+						"value": "[parameters('ls_blob_kv_properties_typeProperties_connectionString_secretName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "acdatafactoryjanfeb_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'acdatafactoryjanfeb_ArmTemplate_0')]"
+			]
+		}
+	]
+}
