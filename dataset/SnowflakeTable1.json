@@ -1,0 +1,16 @@
+{
+	"name": "SnowflakeTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_trial_snow",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "AAYUSH",
+			"table": "AAYUSHTABLE"
+		}
+	}
+}
