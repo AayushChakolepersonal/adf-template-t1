@@ -1,0 +1,34 @@
+{
+	"name": "ls_trial_blob",
+	"properties": {
+		"parameters": {
+			"blob_kv_name": {
+				"type": "string"
+			},
+			"blob_secret_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"sasUri": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_trial_kv",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"keyvault_name": {
+							"value": "@linkedService().blob_kv_name",
+							"type": "Expression"
+						}
+					}
+				},
+				"secretName": {
+					"value": "@linkedService().blob_secret_name",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
