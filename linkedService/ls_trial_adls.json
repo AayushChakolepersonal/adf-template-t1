@@ -1,0 +1,38 @@
+{
+	"name": "ls_trial_adls",
+	"properties": {
+		"parameters": {
+			"adls_url": {
+				"type": "string"
+			},
+			"adls_secret_name": {
+				"type": "string"
+			},
+			"adls_kv_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "@{linkedService().adls_url}",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_trial_kv",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"keyvault_name": {
+							"value": "@linkedService().adls_kv_name",
+							"type": "Expression"
+						}
+					}
+				},
+				"secretName": {
+					"value": "@linkedService().adls_secret_name",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
