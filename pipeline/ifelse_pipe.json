@@ -54,6 +54,35 @@
 				]
 			}
 		],
+		"parameters": {
+			"adls_url": {
+				"type": "string"
+			},
+			"adls_secret_name": {
+				"type": "string"
+			},
+			"adls_kv": {
+				"type": "string"
+			},
+			"snow_account_name": {
+				"type": "string"
+			},
+			"snow_db_name": {
+				"type": "string"
+			},
+			"snow_ware_name": {
+				"type": "string"
+			},
+			"snow_user_name": {
+				"type": "string"
+			},
+			"snow_kv_name": {
+				"type": "string"
+			},
+			"snow_secret_name": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
